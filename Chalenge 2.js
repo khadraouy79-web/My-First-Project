@@ -5,4 +5,3 @@ if (letters == "a" || letters == "e" || letters ==  "i" || letters == "o" ||lett
 }else {
     console.log(`la lettre ${letters}  est une consonne.`)
 }
-
