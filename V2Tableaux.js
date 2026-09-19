@@ -8,3 +8,7 @@ for (i = 0 ; i < taille ; i++){
     console.log("Her is your Tabel");
     console.log(tableau);
 
+
+
+
+
