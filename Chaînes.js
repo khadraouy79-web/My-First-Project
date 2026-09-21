@@ -2,7 +2,7 @@ const prompt = require("prompt-sync")()
 
 let Fname = prompt("whats your first name : ");
 let Lname = prompt("whats your last name : ");
-console.log( Fname + " " + Lname);
+console.log( "Your full name is: " + Fname + " " + Lname);
 let letters = 0
 for (let c of Fname) {
     letters++;
