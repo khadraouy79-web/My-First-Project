@@ -4,7 +4,7 @@ let rectangular = {
     largeur : 5
 }
 let space = rectangular.longueur * rectangular.largeur
-console.log(space)
+console.log("Space of the Rectangular :" + space)
 
 
 

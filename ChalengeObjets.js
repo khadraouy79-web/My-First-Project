@@ -1,31 +1,48 @@
 
-let Student = ["S1 , S2 , S3"]
-let S1 = {
+
+let s1 = {
     Fname : "amine",
     Lname : "One",
-    Notes : [20 , 18 , 19 , 15]
+    Notes : [20 , 18 , 19 , 20]
 }
-let S2 = {
+let s2 = {
     Fname : "Omar",
     Lname : "Tow",
     Notes : [20 , 18 , 19]
 }
-let S3 = {
+let s3 = {
     Fname : "Ayoub",
     Lname : "Three",
     Notes : [20 , 18 , 19]
 }
-console.log("Student Full Name " + S1.Fname + " " + S1.Lname );
+
+let students = [s1,s2,s3]
+console.log("Students Full Name " + s1.Fname + " " + s1.Lname );
 let com = 0
-for (let j=0 ; j < S1.Notes.length ; j++ ){
-    com += S1.Notes[j]    
+for (let j=0 ; j < s1.Notes.length ; j++ ){
+    com += s1.Notes[j]    
 }
-let moiyeen = com / S1.Notes.length ;
+let moiyeen = com / s1.Notes.length ;
 
 console.log(moiyeen)
 
+console.log("Students Full Name " + s2.Fname + " " + s2.Lname );
+let com1 = 0
+for (let j=0 ; j < s2.Notes.length ; j++ ){
+    com1 += s2.Notes[j]    
+}
+let moiyeen1 = com1 / s2.Notes.length ;
 
+console.log(moiyeen1)
 
+console.log("Students Full Name " + s3.Fname + " " + s3.Lname );
+let com2 = 0
+for (let j=0 ; j < s3.Notes.length ; j++ ){
+    com2 += s3.Notes[j]    
+}
+let moiyeen2 = com2 / s2.Notes.length ;
+
+console.log(moiyeen2)
 
 
 
