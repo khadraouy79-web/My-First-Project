@@ -1,14 +1,14 @@
-function multiplier (a,b){
-    return a * b
+let nubers = [1,5,7,35,97,45,12,8]
+
+let max = nubers
+
+for (i = 0 ; i < nubers.length ; i++ ){
+    if ()
+
+
 }
-let result = multiplier(5,8)
-console.log(result)
 
-
-const  multiplierM = (a,b) => (a * b);
-let a = 6
-let b = 5
-console.log(multiplierM(a,b))
+console.log(max)
 
 
 
