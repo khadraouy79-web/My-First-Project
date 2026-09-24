@@ -1,14 +1,14 @@
-let nubers = [1,5,7,35,97,45,12,8]
+let tableau = [26,58,96,22,79,46]
 
-let max = nubers
-
-for (i = 0 ; i < nubers.length ; i++ ){
-    if ()
-
-
+for(let i=0 ; i< tableau.length -1 ; i++){
+    for (let j=0 ; j < tableau.length -i -1 ; j++)
+    
+ if (tableau[j] > tableau[j + 1]) {
+            let temp = tableau[j];
+            tableau[j] = tableau[j + 1];
+            tableau[j + 1] = temp;
+ }
 }
 
-console.log(max)
-
-
+console.log(tableau);
 
