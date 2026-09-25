@@ -60,3 +60,20 @@ do {
        
 
 } while (choix !== '9');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (voter === candidat.electeurs){
+    console.log("you allrady have voted :")
+     return;}

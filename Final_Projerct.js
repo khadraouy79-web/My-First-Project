@@ -18,7 +18,75 @@ console.log(`
 ╚══════════════════════════════════════════╝
 `);
 let lesCandidats = []
+
+let choix;
+do {
+
+    choix = prompt('Votre choix : ');
+
+        switch (choix) {
+            case '1':
+                ajouterCandidat();
+                break;
+            case '2':
+                ajouterPlusieursCandidats();
+                break;
+            case '3':
+                afficherListeCandidats();
+                break;
+            case '4':
+                voterPourCandidat();
+                break;
+            case '5':
+                modifierCandidat();
+                break;
+            case '6':
+                supprimerCandidat();
+                break;
+            case '7':
+                rechercherCandidat();
+                break;
+            case '8':
+                afficherStatistiques();
+                break;
+            case '9':
+                console.log('Au revoir !');
+                break;
+            default:
+                console.log('Choix invalide, réessayez.');
+        }
+
+       
+
+} while (choix !== '9');
+
+
+
+
 function  ajouterCandidat() {
+
+
+
+let candidat = {
+    cin : prompt(" Enter your cin : "),
+    nom : prompt(" Enter your First name : "),
+    prenom : prompt(" Enter your Ladt name : "),
+    age : Number(prompt(" Enter your age")),
+    partiPoliltique : prompt(" Enter your partiPolitique :"),
+    electeurs : []
+    }
+
+     lesCandidats.push(candidat)
+    
+
+}
+   
+
+ console.log(lesCandidats)
+
+
+
+function   ajouterPlusieursCandidats() {
 
 
 taille = Number(prompt("How many candidat we add : "))
@@ -33,7 +101,7 @@ let candidat = {
     partiPoliltique : prompt(" Enter your partiPolitique :"),
     electeurs : []
     }
-// Ajout cod bAch 
+
      lesCandidats.push(candidat)
     
 
@@ -43,7 +111,7 @@ let candidat = {
  console.log(lesCandidats)
 }
 
-ajouterCandidat();
+
                 
 let voter = prompt(" Enter your CIN : ")
 let choice = prompt(" Enter the name of the Political party you wish to vote for : ")
