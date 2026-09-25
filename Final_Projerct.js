@@ -1,4 +1,6 @@
 prompt = require("prompt-sync")();
+let lesCandidats = []
+taille = Number(prompt("How many candidat we have : "))
 
 let candidat = {
     cin : prompt(" Enter your cin : "),
@@ -10,11 +12,13 @@ let candidat = {
 
 }
 
-for (i =0 ; i < candidat.electeurs[3]; i++ ){
-    let lesCandidats = prompt(" lES Condidats : ")
-    candidat.electeurs.push(lesCandidats)
-}
+while ( lesCandidats < taille ){
+    lesCandidats += 
+    console.log(candidat);
 
-console.log(candidat.electeurs);
+}
+   
+
+
 
 
