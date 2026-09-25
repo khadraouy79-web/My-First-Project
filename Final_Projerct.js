@@ -92,7 +92,7 @@ function   ajouterPlusieursCandidats() {
 taille = Number(prompt("How many candidat we add : "))
 
 
-while ( lesCandidats.length < taille ){
+while ( lesCandidats.length <= taille ){
 let candidat = {
     cin : prompt(" Enter your cin : "),
     nom : prompt(" Enter your First name : "),
@@ -108,10 +108,12 @@ let candidat = {
 }
    
 
- console.log(lesCandidats)
+
 }
 
-
+function afficherListeCandidats (){
+console.log(lesCandidats)
+}
                 
 let voter = prompt(" Enter your CIN : ")
 let choice = prompt(" Enter the name of the Political party you wish to vote for : ")
@@ -123,6 +125,9 @@ if ( choice === lesCandidats[i].partiPoliltique ){
     console.log(lesCandidats[i].electeurs.length);
 }
 }
+
+
+
 
 
 
