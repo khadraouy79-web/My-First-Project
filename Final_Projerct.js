@@ -89,20 +89,21 @@ let candidat = {
 function   ajouterPlusieursCandidats() {
 
 
-taille = Number(prompt("How many candidat we add : "))
+taille = Number(prompt("How many candidat we add : "));
+lope  = 0
 
-
-while ( lesCandidats.length <= taille ){
-let candidat = {
-    cin : prompt(" Enter your cin : "),
-    nom : prompt(" Enter your First name : "),
-    prenom : prompt(" Enter your Ladt name : "),
-    age : Number(prompt(" Enter your age")),
-    partiPoliltique : prompt(" Enter your partiPolitique :"),
-    electeurs : []
-    }
-
-     lesCandidats.push(candidat)
+while ( lope < taille ){
+// let candidat = {
+//     cin : prompt(" Enter your cin : "),
+//     nom : prompt(" Enter your First name : "),
+//     prenom : prompt(" Enter your Ladt name : "),
+//     age : Number(prompt(" Enter your age")),
+//     partiPoliltique : prompt(" Enter your partiPolitique :"),
+//     electeurs : []
+//     }
+     lope++ 
+//      lesCandidats.push(candidat)
+ajouterCandidat()
     
 
 }
@@ -114,22 +115,62 @@ let candidat = {
 function afficherListeCandidats (){
 console.log(lesCandidats)
 }
-                
+  
+function  voterPourCandidat (){
+
 let voter = prompt(" Enter your CIN : ")
+let dejaVoter = false
+for (i=0 ; i < lesCandidats.length ; i++){
+    for (j=0 ; j < lesCandidats[i].electeurs.length; j++)
+
+  if (voter == lesCandidats[i].electeurs[j]){
+     console.log("The CIN is alrady exist")
+     dejaVoter = true
+ }
+}
+if ( dejaVoter === false){
 let choice = prompt(" Enter the name of the Political party you wish to vote for : ")
 for (i=0 ; i < lesCandidats.length ; i++){
 if ( choice === lesCandidats[i].partiPoliltique ){
-    lesCandidats[i].electeurs.push(voter)
+    lesCandidats[i].electeurs.push(voter)}
     
 
     console.log(lesCandidats[i].electeurs.length);
 }
 }
 
+}
+
+function modifierCandidat (){
+let modifier = prompt(" What the CIN of the candidat you whant to modifiay : ")
+for(i=0 ; i < lesCandidats.length ; i++){
+if ( modifier === lesCandidats[i].cin){
+    lesCandidats[i].age = prompt("enter the age ")
+}
+
+}
+}
+
+function supprimerCandidat(){
+let Supprimer = prompt(" What the CIN of the candidat you whant to Delete : ")
+for ( i=0  ; i < lesCandidats.length ; i++){
+if (Supprimer === lesCandidats[i].cin)
+    lesCandidats.splice(i,1)
 
 
+console.log("Candidat supprimé avec succès");
 
+}
 
+}
+
+function rechercherCandidat(){
+let cName = prompt("Enter the name of the condidat you want to sersh for : ")
+for (i=0 ; i < lesCandidats.length ; i++){
+    
+}
+
+}
 
 
 
