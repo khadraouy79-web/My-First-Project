@@ -129,9 +129,9 @@ for (i=0 ; i < lesCandidats.length ; i++){
  }
 }
 if ( dejaVoter === false){
-let choice = prompt(" Enter the name of the Political party you wish to vote for : ")
+let choice = prompt(" Enter the cin of party you wish to vote for : ")
 for (i=0 ; i < lesCandidats.length ; i++){
-if ( choice === lesCandidats[i].partiPoliltique ){
+if ( choice === lesCandidats[i].cin ){
     lesCandidats[i].electeurs.push(voter)}
     
 
@@ -176,7 +176,28 @@ for (i=0 ; i < lesCandidats.length ; i++){
 }
 
 function afficherStatistiques (){
-console.log(lesCandidats.electeurs)
+console.log( `
+           1 . Pour Afficher le nombre total de candidats. 
+           2 . Pour Afficher le nombre total de votes exprimés dans toute l'élection. 
+           3 . Pour Afficher le Top 3 des candidats ayant le plus de votes. 
+           4 . Pour  Afficher le nombre de candidats par parti politique. 
+
+`
+)
+let choices;
+do {
+  choices = prompt ("Enter a number : ")
+  switch(choices){
+    case
+
+  }
+
+
+}
+let  numCandidat = lesCandidats.length
+console.log(" le nombre total de candidats : " +  numCandidat) 
+
+
 
 }
 
