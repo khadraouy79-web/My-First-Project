@@ -167,11 +167,17 @@ console.log("Candidat supprimé avec succès");
 function rechercherCandidat(){
 let cName = prompt("Enter the name of the condidat you want to sersh for : ")
 for (i=0 ; i < lesCandidats.length ; i++){
-    
-}
+    if (cName === lesCandidats[i].nom){
+        console.log(lesCandidats[i])
+    }
 
 }
 
+}
 
+function afficherStatistiques (){
+console.log(lesCandidats.electeurs)
+
+}
 
 
