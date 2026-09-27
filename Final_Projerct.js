@@ -123,23 +123,28 @@ for (i=0 ; i < lesCandidats.length ; i++){
     for (j=0 ; j < lesCandidats[i].electeurs.length; j++){
 
      if (voter === lesCandidats[i].electeurs[j]){
-      console.log("The CIN is alrady exist")
+      console.log("Vous avez déjà voté et vous n’avez pas le droit de modifier votre vote ni de voter à nouveau !")
       dejaVoter = true
      }
  }
 }
 if ( dejaVoter === false){
-let choice = prompt(" Enter the cin of party you wish to vote for : ")
+let choice = prompt(" Enter the CIN of the candidat you wish to vote for : ")
+let candidatExiste = false
 for (i=0 ; i < lesCandidats.length ; i++){
 if ( choice === lesCandidats[i].cin ){
     lesCandidats[i].electeurs.push(voter)
+    candidatExiste = true
 console.log(lesCandidats[i].electeurs.length);
-}
+   }
     
 
     
-}
-}
+ }
+  if (candidatExiste === false){
+    console.log("Candidat introuvable !")
+   }
+ }
 
 }
 
