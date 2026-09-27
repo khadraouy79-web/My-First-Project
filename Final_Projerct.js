@@ -1,7 +1,17 @@
 prompt = require("prompt-sync")();
 
+let lesCandidats = [
 
-console.log(`
+  {cin: "BB234567",nom: "Benali",prenom: "Sara",partiPolitique: "independent",age: 42, electeurs: ["EE567890","GG789012","II901234",]},
+  {cin: "DD456789",nom: "Idrissi",prenom: "Nadia",partiPolitique: "justice",age: 29,electeurs: ["HD456789","FF678901","HH890123","HA12234"]},
+  {cin: "AA123456", nom: "Alami", prenom: "Youssef", partiPolitique: "lampe", age: 35, electeurs:["HA123456","HB234567"]},
+  {cin: "CC564381", nom:"Fassi", prenom:"mehdi",partiPolitique:"fleure", age : 30 , electeurs:["YY7789"]}
+
+]
+
+let choix;
+do {
+    console.log(`
 ╔══════════════════════════════════════════╗
 ║       GESTION DES ÉLECTIONS              ║
 ║             MENU PRINCIPAL               ║
@@ -17,10 +27,6 @@ console.log(`
 ║ 9 → Quitter                              ║
 ╚══════════════════════════════════════════╝
 `);
-let lesCandidats = []
-
-let choix;
-do {
 
     choix = prompt('Votre choix : ');
 
@@ -61,29 +67,39 @@ do {
 } while (choix !== '9');
 
 
+function ajouterCandidat() {
 
+    let nom = prompt("Enter your First name : ")
+    let prenom = prompt("Enter your Last name : ")
+    let partiPolitique = prompt("Enter your partiPolitique : ")
 
-function  ajouterCandidat() {
+    while(nom === "" || prenom === "" || partiPolitique === ""){
+        console.log("Les informations ne peuvent pas être vides !")
 
-
-
-let candidat = {
-    cin : prompt(" Enter your cin : "),
-    nom : prompt(" Enter your First name : "),
-    prenom : prompt(" Enter your Last name : "),
-    partiPoliltique : prompt(" Enter your partiPolitique :"),
-    age : Number(prompt(" Enter your age")),
-    electeurs : []
+        nom = prompt("Enter your First name : ")
+        prenom = prompt("Enter your Last name : ")
+        partiPolitique = prompt("Enter your partiPolitique : ")
     }
 
-     lesCandidats.push(candidat)
-    
+    let age = Number(prompt("Enter your age : "))
+
+    while(age <= 0 || isNaN(age)){
+        console.log("Age invalide !")
+        age = Number(prompt("Enter your age : "))
+    }
+
+    let candidat = {
+        cin : prompt("Enter your cin : "),
+        nom : nom,
+        prenom : prenom,
+        partiPolitique : partiPolitique,
+        age : age,
+        electeurs : []
+    }
+
+    lesCandidats.push(candidat)
 }
    
-
- console.log(lesCandidats)
-
-
 
 function   ajouterPlusieursCandidats() {
 
@@ -158,7 +174,7 @@ function afficherTousLesCandidats(){
             "CIN : " + lesCandidats[i].cin +
             " | Nom : " + lesCandidats[i].nom +
             " | Prenom : " + lesCandidats[i].prenom +
-            " | Parti politique : " + lesCandidats[i].partiPoliltique +
+            " | Parti politique : " + lesCandidats[i].partiPolitique +
             " | Age : " + lesCandidats[i].age +
             " | Nombre de votes : " + lesCandidats[i].electeurs.length
         )
@@ -203,13 +219,13 @@ function filtrerParParti(){
 
     for(i = 0 ; i < lesCandidats.length ; i++){
 
-        if(lesCandidats[i].partiPoliltique === partie){
+        if(lesCandidats[i].partiPolitique === partie){
 
             console.log(
                 "CIN : " + lesCandidats[i].cin +
                 " | Nom : " + lesCandidats[i].nom +
                 " | Prenom : " + lesCandidats[i].prenom +
-                " | Parti politique : " + lesCandidats[i].partiPoliltique +
+                " | Parti politique : " + lesCandidats[i].partiPolitique +
                 " | Age : " + lesCandidats[i].age +
                 " | Nombre de votes : " + lesCandidats[i].electeurs.length
             )
@@ -224,6 +240,12 @@ function  voterPourCandidat (){
 
 let voter = prompt(" Enter your CIN : ")
 let dejaVoter = false
+
+    while(voter === ""){
+        console.log("CIN ne peut pas être vide !")
+        voter = prompt("Enter your CIN : ")
+    }
+
 for (i=0 ; i < lesCandidats.length ; i++){
     for (j=0 ; j < lesCandidats[i].electeurs.length; j++){
 
@@ -235,16 +257,20 @@ for (i=0 ; i < lesCandidats.length ; i++){
 }
 if ( dejaVoter === false){
 let choice = prompt(" Enter the CIN of the candidat you wish to vote for : ")
+
+        while(choice === ""){
+            console.log("CIN du candidat ne peut pas être vide !")
+            choice = prompt("Enter the CIN of the candidat you wish to vote for : ")
+        }
+
 let candidatExiste = false
 for (i=0 ; i < lesCandidats.length ; i++){
 if ( choice === lesCandidats[i].cin ){
     lesCandidats[i].electeurs.push(voter)
     candidatExiste = true
-console.log(lesCandidats[i].electeurs.length);
-   }
-    
+    break
 
-    
+   }       
  }
   if (candidatExiste === false){
     console.log("Candidat introuvable !")
@@ -306,10 +332,11 @@ function modifierCandidat(){
 function supprimerCandidat(){
 let Supprimer = prompt(" What the CIN of the candidat you whant to Delete : ")
 for ( i=0  ; i < lesCandidats.length ; i++){
-if (Supprimer === lesCandidats[i].cin)
+if (Supprimer === lesCandidats[i].cin){
     lesCandidats.splice(i,1)
     console.log("Candidat supprimé avec succès");
     break;
+}
 }
 
 }
@@ -390,10 +417,10 @@ function afficherTopCandidats(){
 }
 for(i=0 ; i < 3 && i < lesCandidats.length ; i++){
  console.log(
-        (j + 1) + ". " +
-        lesCandidats[j].nom +
+        (i + 1) + ". " +
+        lesCandidats[i].nom +
         " → " +
-        lesCandidats[j].electeurs.length +
+        lesCandidats[i].electeurs.length +
         " votes"
     );
 }    
@@ -402,7 +429,7 @@ for(i=0 ; i < 3 && i < lesCandidats.length ; i++){
 function afficherNombreCandidatsPolitique(){
     let topPartie = {}
     for ( i=0 ; i < lesCandidats.length ; i++){
-     let partie = lesCandidats[i].partiPoliltique
+     let partie = lesCandidats[i].partiPolitique
     
      if (topPartie[partie] === undefined) {
             topPartie[partie] = 1
