@@ -70,15 +70,14 @@ function  ajouterCandidat() {
 let candidat = {
     cin : prompt(" Enter your cin : "),
     nom : prompt(" Enter your First name : "),
-    prenom : prompt(" Enter your Ladt name : "),
-    age : Number(prompt(" Enter your age")),
+    prenom : prompt(" Enter your Last name : "),
     partiPoliltique : prompt(" Enter your partiPolitique :"),
+    age : Number(prompt(" Enter your age")),
     electeurs : []
     }
 
      lesCandidats.push(candidat)
     
-
 }
    
 
@@ -93,14 +92,14 @@ taille = Number(prompt("How many candidat we add : "));
 lope  = 0
 
 while ( lope < taille ){
-// let candidat = {
-//     cin : prompt(" Enter your cin : "),
-//     nom : prompt(" Enter your First name : "),
-//     prenom : prompt(" Enter your Ladt name : "),
-//     age : Number(prompt(" Enter your age")),
-//     partiPoliltique : prompt(" Enter your partiPolitique :"),
-//     electeurs : []
-//     }
+/* let candidat = {
+     cin : prompt(" Enter your cin : "),
+     nom : prompt(" Enter your First name : "),
+     prenom : prompt(" Enter your Ladt name : "),
+     age : Number(prompt(" Enter your age")),
+     partiPoliltique : prompt(" Enter your partiPolitique :"),
+     electeurs : []
+    }*/
      lope++ 
 //      lesCandidats.push(candidat)
 ajouterCandidat()
@@ -121,21 +120,24 @@ function  voterPourCandidat (){
 let voter = prompt(" Enter your CIN : ")
 let dejaVoter = false
 for (i=0 ; i < lesCandidats.length ; i++){
-    for (j=0 ; j < lesCandidats[i].electeurs.length; j++)
+    for (j=0 ; j < lesCandidats[i].electeurs.length; j++){
 
-  if (voter == lesCandidats[i].electeurs[j]){
-     console.log("The CIN is alrady exist")
-     dejaVoter = true
+     if (voter === lesCandidats[i].electeurs[j]){
+      console.log("The CIN is alrady exist")
+      dejaVoter = true
+     }
  }
 }
 if ( dejaVoter === false){
 let choice = prompt(" Enter the cin of party you wish to vote for : ")
 for (i=0 ; i < lesCandidats.length ; i++){
 if ( choice === lesCandidats[i].cin ){
-    lesCandidats[i].electeurs.push(voter)}
+    lesCandidats[i].electeurs.push(voter)
+console.log(lesCandidats[i].electeurs.length);
+}
     
 
-    console.log(lesCandidats[i].electeurs.length);
+    
 }
 }
 
@@ -181,6 +183,7 @@ console.log( `
            2 . Pour Afficher le nombre total de votes exprimés dans toute l'élection. 
            3 . Pour Afficher le Top 3 des candidats ayant le plus de votes. 
            4 . Pour  Afficher le nombre de candidats par parti politique. 
+           0 . Back to menu .
 
 `
 )
@@ -188,17 +191,79 @@ let choices;
 do {
   choices = prompt ("Enter a number : ")
   switch(choices){
-    case
+    case "1" :
+        afficherTotalCandidats();
+        break;
 
-  }
+    case "2" :
+        afficherNombreTotalVotes();
+        break;
+    case "3" :
+        afficherTopCandidats();
+        break;
+    case "4" :
+        afficherNombreCandidatsPolitique();
+        break;
+    case "0" :  
+        console.log('Back to menu !');
+         break;
+}
+} while (choices !== '0');
+
+
+
+} 
+
+
+function afficherTotalCandidats(){
+
+let  numCandidat = lesCandidats.length;
+console.log(" le nombre total de candidats : " +  numCandidat)
+}
+
+function afficherNombreTotalVotes(){
+    let totalVotes = 0
+    for(i=0 ; i < lesCandidats.electeurs ; i++)
+        totalVotes = totalVotes + lesCandidats[i].electeurs.length
+    console.log("le nombre total de votes exprimés dans toute l'élection : " + totalVotes);
 
 
 }
-let  numCandidat = lesCandidats.length
-console.log(" le nombre total de candidats : " +  numCandidat) 
 
+function afficherTopCandidats(){
+    for (i=0 ; i < lesCandidats.length ; i++)
+        for (j=0 ; j <  lesCandidats.length -1 ; j++)
+    if (lesCandidats[j].electeurs.length < lesCandidats[j + 1].electeurs.length) {
 
+            let temp = lesCandidats[j];
+            lesCandidats[j] = lesCandidats[j + 1];
+            lesCandidats[j + 1] = temp;
 
 }
+ console.log(
+        (j + 1) + ". " +
+        lesCandidats[j].nom +
+        " → " +
+        lesCandidats[j].electeurs.length +
+        " votes"
+    );
+}
 
+function afficherNombreCandidatsPolitique(){
+    let topPartie = {}
+    for ( i=0 ; i < lesCandidats.length ; i++){
+     let partie = lesCandidats[i].partiPoliltique
+    
+     if (topPartie[partie] === undefined) {
+            topPartie[partie] = 1
+        }
+    
+        else {
+            topPartie[partie]++
+           
+        }
+console.log(topPartie)
+
+}
+}
 
