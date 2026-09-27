@@ -69,27 +69,29 @@ do {
 
 function ajouterCandidat() {
 
-    let nom = prompt("Enter your First name : ")
-    let prenom = prompt("Enter your Last name : ")
-    let partiPolitique = prompt("Enter your partiPolitique : ")
+    console.log("Saisissez les informations du nouveau candidat :")
+    let cin = prompt("Entrez votre CIN : ")
+    let nom = prompt("Entrez votre nom : ")
+    let prenom = prompt("Entrez votre prénom : ")
+    let partiPolitique = prompt("Entrez votre parti politique : ")
 
     while(nom === "" || prenom === "" || partiPolitique === ""){
         console.log("Les informations ne peuvent pas être vides !")
 
-        nom = prompt("Enter your First name : ")
-        prenom = prompt("Enter your Last name : ")
-        partiPolitique = prompt("Enter your partiPolitique : ")
+        nom = prompt("Entrez votre nom : ")
+        prenom = prompt("Entrez votre prénom : ")
+        partiPolitique = prompt("Entrez votre parti politique : ")
     }
 
-    let age = Number(prompt("Enter your age : "))
+    let age = Number(prompt("Entrez votre âge : "))
 
     while(age <= 0 || isNaN(age)){
         console.log("Age invalide !")
-        age = Number(prompt("Enter your age : "))
+        age = Number(prompt("Entrez votre âge : "))
     }
 
     let candidat = {
-        cin : prompt("Enter your cin : "),
+        cin : cin,
         nom : nom,
         prenom : prenom,
         partiPolitique : partiPolitique,
@@ -104,26 +106,18 @@ function ajouterCandidat() {
 function   ajouterPlusieursCandidats() {
 
 
-taille = Number(prompt("How many candidat we add : "));
+taille = Number(prompt("Combien de candidats voulez-vous ajouter : "));
 lope  = 0
 
 while ( lope < taille ){
-/* let candidat = {
-     cin : prompt(" Enter your cin : "),
-     nom : prompt(" Enter your First name : "),
-     prenom : prompt(" Enter your Ladt name : "),
-     age : Number(prompt(" Enter your age")),
-     partiPoliltique : prompt(" Enter your partiPolitique :"),
-     electeurs : []
-    }*/
+
      lope++ 
-//      lesCandidats.push(candidat)
+
 ajouterCandidat()
     
 
-}
+ }
    
-
 
 }
 
@@ -139,7 +133,7 @@ function afficherListeCandidats (){
     let choix
 
     do {
-        choix = prompt("Enter a number : ")
+        choix = prompt("Entrez un numéro : ")
 
         switch(choix){
 
@@ -238,12 +232,12 @@ function filtrerParParti(){
   
 function  voterPourCandidat (){
 
-let voter = prompt(" Enter your CIN : ")
+let voter = prompt(" Entrez votre CIN : ")
 let dejaVoter = false
 
     while(voter === ""){
         console.log("CIN ne peut pas être vide !")
-        voter = prompt("Enter your CIN : ")
+        voter = prompt("Entrez votre CIN : ")
     }
 
 for (i=0 ; i < lesCandidats.length ; i++){
@@ -256,11 +250,11 @@ for (i=0 ; i < lesCandidats.length ; i++){
  }
 }
 if ( dejaVoter === false){
-let choice = prompt(" Enter the CIN of the candidat you wish to vote for : ")
+let choice = prompt(" Entrez la CIN du candidat pour lequel vous souhaitez voter : ")
 
         while(choice === ""){
             console.log("CIN du candidat ne peut pas être vide !")
-            choice = prompt("Enter the CIN of the candidat you wish to vote for : ")
+            choice = prompt("Entrez la CIN du candidat pour lequel vous souhaitez voter : ")
         }
 
 let candidatExiste = false
@@ -282,7 +276,7 @@ if ( choice === lesCandidats[i].cin ){
 
 function modifierCandidat(){
 
-    let modifier = prompt("What is the CIN of the candidat you want to modify : ")
+    let modifier = prompt("Quelle est la CIN du candidat que vous souhaitez modifier : ")
 
     for(i = 0 ; i < lesCandidats.length ; i++){
 
@@ -303,7 +297,7 @@ function modifierCandidat(){
                 switch(choix){
 
                     case "1":
-                        lesCandidats[i].partiPoliltique = prompt("Enter le nouveau parti politique : ")
+                        lesCandidats[i].partiPolitique = prompt("Enter le nouveau parti politique : ")
                         console.log("Parti politique modifié avec succès")
                         break
 
@@ -330,7 +324,7 @@ function modifierCandidat(){
 
 
 function supprimerCandidat(){
-let Supprimer = prompt(" What the CIN of the candidat you whant to Delete : ")
+let Supprimer = prompt(" Quelle est la CIN du candidat que vous souhaitez supprimer : ")
 for ( i=0  ; i < lesCandidats.length ; i++){
 if (Supprimer === lesCandidats[i].cin){
     lesCandidats.splice(i,1)
@@ -342,7 +336,7 @@ if (Supprimer === lesCandidats[i].cin){
 }
 
 function rechercherCandidat(){
-let cName = prompt("Enter the name of the condidat you want to sersh for : ")
+let cName = prompt("Entrez le nom du candidat que vous souhaitez rechercher : ")
 for (i=0 ; i < lesCandidats.length ; i++){
     if (cName === lesCandidats[i].nom){
         console.log(lesCandidats[i])
@@ -427,22 +421,41 @@ for(i=0 ; i < 3 && i < lesCandidats.length ; i++){
 }
 
 function afficherNombreCandidatsPolitique(){
-    let topPartie = {}
-    for ( i=0 ; i < lesCandidats.length ; i++){
-     let partie = lesCandidats[i].partiPolitique
-    
-     if (topPartie[partie] === undefined) {
-            topPartie[partie] = 1
-        }
-    
-        else {
-            topPartie[partie]++
-           
+
+    let parties = []
+
+    for(i = 0 ; i < lesCandidats.length ; i++){
+
+        let partie = lesCandidats[i].partiPolitique
+        let existe = false
+
+        for(j = 0 ; j < parties.length ; j++){
+
+            if(parties[j] === partie){
+                existe = true
+            }
+
         }
 
+        if(existe === false){
+            parties.push(partie)
+        }
+    }
 
-  }
-console.log(topPartie)
+    for(i = 0 ; i < parties.length ; i++){
+
+        let nombre = 0
+
+        for(j = 0 ; j < lesCandidats.length ; j++){
+
+            if(lesCandidats[j].partiPolitique === parties[i]){
+                nombre++
+            }
+
+        }
+
+        console.log(parties[i] + " : " + nombre + " candidats")
+    }
 }
 
 
