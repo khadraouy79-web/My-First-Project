@@ -100,8 +100,8 @@ function ajouterCandidat() {
     }
 
     lesCandidats.push(candidat)
-    console.log("les informations ont été enregistrées avec succés ")
-    
+    console.log("les informations ont été enregistrées avec succés : ")
+
 }
    
 
@@ -270,8 +270,9 @@ if ( choice === lesCandidats[i].cin ){
  }
   if (candidatExiste === false){
     console.log("Candidat introuvable !")
-   }
- }
+  } 
+console.log("Le vote a été effectué avec succès . :")
+} 
 
 }
 
