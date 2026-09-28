@@ -100,6 +100,8 @@ function ajouterCandidat() {
     }
 
     lesCandidats.push(candidat)
+    console.log("les informations ont été enregistrées avec succés ")
+    
 }
    
 
